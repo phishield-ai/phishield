@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <base target="_top">
+  <style>
+    .settings-content {
+      padding: 20px;
+    }
+    .section {
+      margin-bottom: 20px;
+    }
+    .section-title {
+      font-size: 16px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+    .option-label {
+      display: block;
+      margin-bottom: 5px;
+    }
+    .option-input {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-sizing: border-box;
+    }
+    .button {
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: #ffffff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <div class="settings-content">
+    <div class="section">
+      <div class="section-title">General Settings</div>
+      <label for="notification-toggle" class="option-label">Enable Email Notifications:</label>
+      <input type="checkbox" id="notification-toggle" class="option-input">
+    </div>
+
+    <div class="section">
+      <div class="section-title">Phishing Detection Settings</div>
+      <label for="detection-threshold" class="option-label">Detection Threshold:</label>
+      <input type="range" id="detection-threshold" class="option-input" min="1" max="10" value="5">
+    </div>
+
+    <button id="save-settings-btn" class="button">Save Settings</button>
+  </div>
+
+  <script>
+    function saveSettings() {
+      var enableNotifications = document.getElementById('notification-toggle').checked;
+      var detectionThreshold = document.getElementById('detection-threshold').value;
+
+      console.log('Enable Notifications:', enableNotifications);
+      console.log('Detection Threshold:', detectionThreshold);
+
+      alert('Settings saved successfully!');
+    }
+
+    document.getElementById('save-settings-btn').addEventListener('click', saveSettings);
+  </script>
+</body>
+</html>
