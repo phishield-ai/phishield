@@ -1,7 +1,12 @@
 # phishingAI
 
 ## Setup
-We need to add the following line in the **.env** file:
+Just create a file called **.env**
+```
+touch .env
+```
+
+Add the following line in the **.env** file:
 ``` 
 GOOGLE_API_KEY=<MY_AWESOME_KEY>
 ```
