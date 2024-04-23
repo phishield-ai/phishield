@@ -48,15 +48,18 @@
     </div>
     <div class="section">
       <div class="section-title">Settings</div>
-      <button class="button" onclick="openSettings()">Open Settings</button>
+      <button class="button" onclick="callSettings()">Open Settings</button>
     </div>
   </div>
 
   <script>
-    function showSettings() {
-        var html = HtmlService.createTemplateFromFile('settings').evaluate().setTitle("Settings");
-        DocumentApp.getUi()
-            .showSettings(html);
+    function callSettings() {
+      google.script.run.openSettings();
+    }
+
+    function openSettings() {
+      var html = HtmlService.createTemplateFromFile('settings').evaluate().setTitle("Settings")
+      DocumentApp.getUi().showSidebar(html);
     }
   </script>
 </body>
