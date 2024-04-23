@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <base target="_top">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
+  <style>
+    .sidebar-content {
+      padding: 20px;
+    }
+    .section {
+      margin-bottom: 20px;
+    }
+    .section-title {
+      font-size: 16px;
+      font-weight: bold;
+      margin-bottom: 10px;
+      border-top: 1px solid #ccc;
+      padding-top: 10px;
+    }
+    .button {
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: #ffffff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <div class="sidebar-content">
+    <div class="section">
+      <img src="https://storage.googleapis.com/msgsndr/gN4Zty1MvxwmdFKFeai8/media/6620674106d953e1e10dcde7.png" alt="PhishShield Logo" style="width: 50px; height: 50px; margin-right: 10px;">
+      <div>PhishShield</div>
+      <div>Protecting your inbox from phishing attacks</div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Phishing Detector</div>
+      <button class="button" onclick="runPhishingDetection()">Run Phishing Detection</button>
+    </div>
+    <div class="section">
+      <div class="section-title">Report Phishing</div>
+      <button class="button" onclick="callReportPhishingModal()">Report Phishing Email</button>
+    </div>
+    <div class="section">
+      <div class="section-title">Settings</div>
+      <button class="button" onclick="callSettings()">Open Settings</button>
+    </div>
+  </div>
+
+  <script>
+    function callSettings() {
+      google.script.run.openSettings();
+    }
+
+    function openSettings() {
+      var html = HtmlService.createTemplateFromFile('settings').evaluate().setTitle("Settings");
+      DocumentApp.getUi().showSidebar(html);
+    }
+
+    function callReportPhishingModal() {
+      google.script.run.openReportPhishingModal();
+    }
+
+    function openReportPhishingModal() {
+      var html = HtmlService.createTemplateFromFile('reportPhishing').evaluate().setTitle("Report Phishing");
+      DocumentApp.getUi().showModalDialog(html, 'Report Phishing');
+    }
+  </script>
+</body>
+</html>

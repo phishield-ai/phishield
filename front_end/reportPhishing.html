@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <base target="_top">
+  <style>
+    .modal-content {
+      padding: 20px;
+    }
+    .input-label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+    .input-field {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-sizing: border-box;
+      margin-bottom: 10px;
+    }
+    .button {
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: #ffffff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <div class="modal-content">
+    <label for="attacker-email" class="input-label">Attacker's Email:</label>
+    <input type="email" id="attacker-email" class="input-field">
+    <button id="submit-btn" class="button">Submit</button>
+  </div>
+
+  <script>
+    document.getElementById('submit-btn').addEventListener('click', function() {
+      var attackerEmail = document.getElementById('attacker-email').value;
+      google.script.run.processAttackerEmail(attackerEmail);
+      google.script.host.close();
+    });
+  </script>
+</body>
+</html>
