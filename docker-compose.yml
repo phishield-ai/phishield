@@ -1,0 +1,29 @@
+version: '3.2'
+
+services:
+  devcontainer:
+    build:
+      context: ./
+      dockerfile: .devcontainer/Dockerfile
+    container_name: phishield-devcontainer
+    env_file: .env
+    image: phishield/devcontainer:latest
+    working_dir: /phishield
+    tty: true
+    user: vscode:vscode
+    shm_size: "4gb"
+    volumes:
+      - ./:/phishield/
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ~/.ssh:/home/vscode/.ssh
+    depends_on:
+      - database
+  
+  database:
+    image: bitnami/postgresql:latest
+    container_name: phishield-database
+    env_file: .env
+  
+  cache:
+    image: redis:6-alpine
+    restart: always

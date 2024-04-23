@@ -1,0 +1,56 @@
+{
+    "name": "Workspace",
+    "remoteUser": "vscode",
+    "dockerComposeFile": ["../docker-compose.yml"],
+    "service": "devcontainer",
+    "workspaceFolder": "/phishield",
+    "containerEnv": {
+      "HATCH_ENV_TYPE_VIRTUAL_PATH": "/phishield/backend/.venv/default/"
+    },
+    "customizations": {
+      "vscode": {
+        "extensions": [
+          "ms-azuretools.vscode-docker",
+          "esbenp.prettier-vscode",
+          "bierner.markdown-mermaid",
+          "yzhang.markdown-all-in-one",
+          "ms-vsliveshare.vsliveshare",
+          "eamodio.gitlens",
+          "DavidAnson.vscode-markdownlint",
+          "pflannery.vscode-versionlens",
+          "ms-python.python",
+          "charliermarsh.ruff",
+        ],
+        "settings": {
+          "files.eol": "\n",
+          "files.exclude": {
+            "**/.venv": true,
+            "**/__pycache__": true
+          },
+          "editor.codeActionsOnSave": {
+            "source.organizeImports": false,
+            "source.fixAll": true,
+            "source.removeUnusedImports": true
+          },
+          "explorer.compactFolders": false,
+          "editor.defaultFormatter": "charliermarsh.ruff",
+          "python.defaultInterpreterPath": "/phishield/backend/.venv/default/bin/python",
+          "python.analysis.autoImportCompletions": true,
+          "[python]": {
+            "editor.formatOnSave": true,
+            "editor.defaultFormatter": "charliermarsh.ruff",
+            "editor.codeActionsOnSave": {
+              "source.fixAll": true,
+              "source.organizeImports.ruff": true
+            }
+          },
+          "ruff.lint.args": [
+            "--config=/phishield/backend/pyproject.toml"
+          ],
+          "ruff.format.args": [
+            "--config=/phishield/backend/pyproject.toml"
+          ]
+        }
+      }
+    }
+  }

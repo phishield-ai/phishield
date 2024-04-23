@@ -1,0 +1,9 @@
+{
+    "apps" : [
+      {
+        "name": "api",
+        "script": "set -a; source .env; cd ./backend && hatch run phishield api --dev",
+        "ignore_watch": []
+      }
+    ]
+}
