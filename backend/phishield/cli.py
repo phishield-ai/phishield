@@ -77,7 +77,7 @@ def worker(dev):
         sys.argv.pop(0)
 
     sys.argv += [
-        "phishield.worker.tasks:broker",
+        "phishield.worker:broker",
     ]
 
     if dev:
