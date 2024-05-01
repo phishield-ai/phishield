@@ -1,8 +1,11 @@
 import sys
+import time
 
 import click
-import uvicorn
 from dramatiq import cli as dramatiq
+from loguru import logger
+
+from phishield.packages.redis.utils import get_cache
 
 
 def base_options(f):
@@ -24,6 +27,37 @@ def cli():
 @click.command(help="Run API.")
 @base_options
 def api(dev):
+    import uvicorn
+
+    if dev:
+        import debugpy
+
+        from phishield.conf import environment
+        from phishield.packages.storage.utils import minio_health_check, minio_setup_bucket
+
+        debugpy.listen(7999)
+
+        while not get_cache().ping():
+            logger.info("Waiting for Redis to be up...")
+            time.sleep(2)
+
+        while not minio_health_check(
+            endpoint_url=environment.MINIO_STORAGE_URI,
+            user=environment.MINIO_ROOT_USER,
+            password=environment.MINIO_ROOT_PASSWORD,
+            secure=False,
+        ):
+            logger.info("Waiting for MinIO to be up...")
+            time.sleep(2)
+
+        minio_setup_bucket(
+            endpoint_url=environment.MINIO_STORAGE_URI,
+            bucket=environment.MINIO_STORAGE_BUCKET,
+            user=environment.MINIO_ROOT_USER,
+            password=environment.MINIO_ROOT_PASSWORD,
+            secure=False,
+        )
+
     uvicorn.run(
         "phishield:api",
         host="0.0.0.0",
@@ -58,6 +92,7 @@ def worker(dev):
 @cli.group(help="Setup commands")
 def setup():
     pass
+
 
 cli.add_command(api)
 cli.add_command(worker)
