@@ -3,6 +3,13 @@
       {
         "name": "api",
         "script": "set -a; source .env; cd ./backend && hatch run phishield api --dev",
+        "watch": ".env",
+        "ignore_watch": []
+      },
+      {
+        "name": "worker",
+        "script": "set -a; source .env; cd ./backend && hatch run phishield worker --dev",
+        "watch": ".env",
         "ignore_watch": []
       }
     ]
