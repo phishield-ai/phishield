@@ -11,9 +11,19 @@ class Environment(BaseSettings):
     POSTGRES_USER: str
     POSTGRES_PASSWORD: str
 
+    MINIO_ROOT_USER: str
+    MINIO_ROOT_PASSWORD: str
+    MINIO_STORAGE_BUCKET: str
+    MINIO_STORAGE_URI: str
+
     CACHE_HOST: str
     CACHE_PORT: str
     CACHE_DB: int
+
+    GOOGLE_API_KEY: str
+    GOOGLE_AI_MODEL: str
+
+    VIRUS_TOTAL_API_KEY: str
 
     @property
     def DATABASE_URI(self):

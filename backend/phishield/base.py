@@ -6,6 +6,7 @@ from starlette_context import plugins
 from starlette_context.middleware import RawContextMiddleware
 
 from phishield import lifespan
+from phishield.apps import email
 from phishield.packages.fastapi import healthcheks
 from phishield.packages.fastapi.jsend.exceptions import (
     HTTPExceptionHandler,
@@ -24,8 +25,8 @@ api = FastAPI(
         Middleware(
             RawContextMiddleware,
             plugins=(
-                plugins.RequestIdPlugin(),
-                plugins.CorrelationIdPlugin(),
+                plugins.RequestIdPlugin(),  # type: ignore
+                plugins.CorrelationIdPlugin(),  # type: ignore
             ),
         )
     ],
@@ -41,11 +42,14 @@ api.add_middleware(
     allow_headers=["*"],
 )
 
-api.add_exception_handler(*StarletteHTTPExceptionHandler)
-api.add_exception_handler(*HTTPExceptionHandler)
-api.add_exception_handler(*RequestValidationExceptionHandler)
+api.add_exception_handler(*StarletteHTTPExceptionHandler)  # type: ignore
+api.add_exception_handler(*HTTPExceptionHandler)  # type: ignore
+api.add_exception_handler(*RequestValidationExceptionHandler)  # type: ignore
 api.add_exception_handler(*UncatchedExceptionHandler)
 
 api.include_router(healthcheks.routes.router)
+
+for app in [email]:
+    api.include_router(app.router)
 
 add_pagination(api)
