@@ -18,7 +18,7 @@ services:
       - ~/.ssh:/home/vscode/.ssh
     depends_on:
       - database
-  
+
   database:
     image: bitnami/postgresql:latest
     container_name: phishield-database
@@ -27,3 +27,11 @@ services:
   cache:
     image: redis:6-alpine
     restart: always
+  
+  storage:
+    image: minio/minio:latest
+    command: server --console-address ":9001" /data
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    env_file: .env
