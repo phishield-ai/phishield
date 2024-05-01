@@ -40,4 +40,4 @@ async def api_startup(app: FastAPI):
 
 
 async def api_shutdown(app: FastAPI):
-    logger.info("Shutting down FastAPI")
+    logger.debug("Shutting down FastAPI")
