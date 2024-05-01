@@ -16,8 +16,8 @@ RUN apt-get update && \
 
 RUN pip install hatch
 
-COPY src/pyproject.toml ./
-COPY src/phishield ./phishield
+COPY pyproject.toml ./
+COPY phishield ./phishield
 
 RUN hatch build
 
