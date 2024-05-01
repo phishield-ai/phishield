@@ -1,0 +1,41 @@
+{
+  "timeZone": "America/New_York",
+  "dependencies": {
+  },
+  "exceptionLogging": "STACKDRIVER",
+  "oauthScopes": [
+    "https://www.googleapis.com/auth/calendar.addons.execute",
+    "https://www.googleapis.com/auth/calendar.readonly",
+    "https://www.googleapis.com/auth/drive.addons.metadata.readonly",
+    "https://www.googleapis.com/auth/gmail.addons.current.action.compose",
+    "https://www.googleapis.com/auth/gmail.addons.current.message.readonly",
+    "https://www.googleapis.com/auth/gmail.addons.execute",
+    "https://www.googleapis.com/auth/script.locale"],
+  "runtimeVersion": "V8",
+  "addOns": {
+    "common": {
+      "name": "PhishShield",
+      "logoUrl": "https://ffd04feb3264e31cbca5add4d0281514c77e1025ec87ae866efdad4-apidata.googleusercontent.com/download/storage/v1/b/phishshield/o/phish-shield-logo.png?jk=ASOpP9ic7zO6XmV0s53oiE8N-ZKGd8OtCs6czY73B3vQpkRNWLnjoP1aiUtFaQUKIPot2MF7B73wIvfFsTohtvAfqt1tSXe89xNE3dt6Qje_z-E4PFaTvngrZsRD8KbWceEgkcgJqKNVs2Wwz9XTmnJGuYQ97ECEwUfivJsPGFqqke_0uc6yhjWDn2rf-26ht8mWIe7N6FNvGII-j2sBvm7bVHt5lrUQQcR-RgSGoJ_AjgQNnLX5dtCP-z8gV8-ATzNPivMR1YCwxfK_4o6eJ9bYR2NnaRxNaONG7C_25quolKhRwNVZNBS9DfnTWYuOC1cn5Oa8RQ_m9fsekpr9aMi8qncL9L11067B7-cwh_lDl93qJPMm7rO4bzVP5BuelERbDVh3f5ZBQTMvrlrfUS7w-sd8sx36gf3VvqzKOIC0SBTSFq29g5oMQXufA6T4pvRV3_A6SXQ7on8gvxd1CvpSnUplz3D54n5Y_SgPif4qyHzLOqtaW0JjMypvJ80HWzwsk5hwRk0edxNDbG_FcEEapphQZePUkCQxRIKzufGPkeHDYXzBF7e3x-ttc9mA_MxrSuK102sVwtHl6KXhVvAx9UxSXe-6evYQrzZZiCQQNWMbDDJacnBT7-1fMMVERwKuPaG9GVrBmCSopJApsBg5M6_58uxgP326uTTpcE4PeXJDMVEqL3IwhNCVbsFQEJ0XslWRnIND8e8KR4eDl8jippzMc0O1O7TXgCu0X6ZKS2llc5UhotaU0PNaNcXjTuXHY2RDd6PIYySH6ItlvcWWxOwK-tV1v7r5oPQzzSCnTsK9Y4B_31n9-Kpy84Fr0wYCDHWGCJJ5L_MsLH4ZhYcn_LUvpe8RaAji-Zp3y1PRqe_ZCVLrgy9A4H7FVCHM_VtlnrxfFdDLwIrN2_RT2p5gpADx6ziDPSGberdc2YwliRQIzHuwdQDs-7pP6sTBmEj7768VVDmono4df9ElpwxPOO0eu3eB6_ACBhSb8onC6X0YMFoItVonbG_ktGdvXz2HLgMyoF72TT4aNPS0SG28zZJuFytOvRgf_sjj4We2QGdr0m2kfhO8heEDIgCUw-l4PgBrO7axXNGhGKVOxmXK9Jk95iS33LP4t8DpABaOXjQW1HCxcpGqwWKSI2fC7nlqax0-zuQigGaePwT7wZX5KX-LsG1N&isca=1",
+      "useLocaleFromApp": true,
+      "homepageTrigger": {
+        "runFunction": "onHomepage",
+        "enabled": true
+      },
+      "universalActions": [{
+        "label": "Learn more about PhishShield",
+        "openLink": "https://phishield.com"
+      }]
+    },
+    "gmail": {
+      "composeTrigger": {
+        "selectActions": [{
+          "text": "Insert cat",
+          "runFunction": "onGmailCompose"
+        }],
+        "draftAccess": "NONE"
+      }
+    }
+  }
+}
+
+  

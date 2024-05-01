@@ -1,0 +1,19 @@
+{
+    "oauthScopes": ["https://www.googleapis.com/auth/gmail.addons.execute", "https://www.googleapis.com/auth/gmail.metadata"],
+    "addOns": {
+      "common": {
+        "name": "PhishShield",
+        "logoUrl": "https://storage.googleapis.com/msgsndr/gN4Zty1MvxwmdFKFeai8/media/6620674106d953e1e10dcde7.png",
+        "homepageTrigger": {
+          "runFunction": "https://us-central1-test-http-runtime.cloudfunctions.net/HttpAddOn/exampleWidgets"
+        }
+      },
+      "gmail": {
+        "contextualTriggers": [{
+          "unconditional": {
+          },
+          "onTriggerFunction": "https://us-central1-test-http-runtime.cloudfunctions.net/GmailExample/simpleMessageInfo"
+        }]
+      }
+    }
+  }
