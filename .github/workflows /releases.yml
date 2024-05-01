@@ -1,0 +1,54 @@
+name: Build and Publish
+
+on: push
+
+jobs:
+  create-tag:
+    runs-on: ubuntu-22.04
+    permissions:
+      contents: write
+
+    outputs:
+      new_tag: ${{ steps.bump.outputs.new_tag }}
+      tag: ${{ steps.bump.outputs.tag }}
+      part: ${{ steps.bump.outputs.part }}
+
+    steps:
+      - name: Checkout Repository
+        id: checkout
+        uses: actions/checkout@v3
+        with:
+           ref: ${{ github.event.pull_request.merge_commit_sha }}
+           fetch-depth: '0'
+
+      - name: Bump Version and Push Tag
+        id: bump
+        uses: anothrNick/github-tag-action@1.64.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          WITH_V: true
+          PRERELEASE: false
+          INITIAL_VERSION:  ${{ secrets.INITIAL_VERSION }}
+
+  publish-phishield:
+    runs-on: ubuntu-latest
+    needs: create-tag
+  
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v1
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build and Push Docker Image
+        env:
+          VERSION: ${{ needs.create-tag.outputs.tag }}
+        run: |
+          echo "Building and pushing version: ${VERSION}"
+          docker build . --tag ghcr.io/JumpingDino/phishield:${VERSION}
+          docker push ghcr.io/JumpingDino/phishield:${VERSION}
