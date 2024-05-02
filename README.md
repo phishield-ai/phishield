@@ -79,7 +79,7 @@ This repository is MIT licensed, as found in the [LICENSE][l] file.
 
 ## 📝 Resources
 
-[Excalidraw link](https://excalidraw.com/#json=fEyNMAY_cSud2xIb6pyLe,dnuTKSpHpNzxUbA1bEAwnw)
-[Docs](https://docs.google.com/document/d/1hqb6dtwwrM9m0J9M7Hs_Luh-YFcipCR_pU7iTt7dMF0/edit#heading=h.o9d3s77nlgan)
-[Dev Slides](https://docs.google.com/presentation/d/1dlECb5vT5xgdeMGmIWjR2PP6kdnXv5SeySLidNJIJEk/edit#slide=id.g2d17db17af1_0_55)
-[Final Slides](https://docs.google.com/presentation/d/1xuKW4NGXiYnt6rKa3kWGscZjn21sNRV1fJKkrJxj5Gc/edit#slide=id.g2d182d423c9_0_128)
+- [Excalidraw link](https://excalidraw.com/#json=fEyNMAY_cSud2xIb6pyLe,dnuTKSpHpNzxUbA1bEAwnw)
+- [Docs](https://docs.google.com/document/d/1hqb6dtwwrM9m0J9M7Hs_Luh-YFcipCR_pU7iTt7dMF0/edit#heading=h.o9d3s77nlgan)
+- [Dev Slides](https://docs.google.com/presentation/d/1dlECb5vT5xgdeMGmIWjR2PP6kdnXv5SeySLidNJIJEk/edit#slide=id.g2d17db17af1_0_55)
+- [Final Slides](https://docs.google.com/presentation/d/1xuKW4NGXiYnt6rKa3kWGscZjn21sNRV1fJKkrJxj5Gc/edit#slide=id.g2d182d423c9_0_128)
