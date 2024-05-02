@@ -22,10 +22,10 @@ Integrated with VirusTotal API for file scan analysis.
 1. Clone the repository.
 
 ```
-git clone git@github.com:JumpingDino/phishingAI.git
+git clone git@github.com:phishield-ai/phishingAI.git
 ```
 
-2. Copy the [.env.dist](https://github.com/JumpingDino/phishingAI/blob/master/.env.dist) file and create a <b>.env</b> file filling your environment variables
+2. Copy the [.env.dist](https://github.com/phishield-ai/phishingAI/blob/master/.env.dist) file and create a <b>.env</b> file filling your environment variables
 
 3. Open the project in Visual Studio Code.
 
@@ -75,7 +75,7 @@ This project was built using the following technologies:
 
 This repository is MIT licensed, as found in the [LICENSE][l] file.
 
-[l]: https://github.com/JumpingDino/phishingAI/blob/master/LICENSE
+[l]: https://github.com/phishield-ai/phishingAI/blob/master/LICENSE
 
 ## 📝 Resources
 
