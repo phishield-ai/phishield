@@ -53,5 +53,5 @@ jobs:
           VERSION: ${{ needs.create-tag.outputs.tag }}
         run: |
           echo "Building and pushing version: ${VERSION}"
-          docker build . --tag ghcr.io/JumpingDino/phishield:${VERSION}
-          docker push ghcr.io/JumpingDino/phishield:${VERSION}
+          docker build . --tag ghcr.io/phishield-ai/phishield:${VERSION}
+          docker push ghcr.io/phishield-ai/phishield:${VERSION}
