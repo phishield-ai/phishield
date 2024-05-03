@@ -2,8 +2,9 @@ version: '3.2'
 
 services:
   backend:
-    image: ghcr.io/phishield-ai/phishield:latest
+    image: kfbfarley/phishield:v0.0.1
     container_name: phishield-backend
+    command: api
     env_file: .env
     depends_on:
       - cache
@@ -12,47 +13,44 @@ services:
     image: redis:6-alpine
     container_name: phishield-cache
     restart: always
-  
+
   nginx:
-    image: nginx:latest
+    image: bitnami/nginx:latest
     container_name: phishield-nginx
     ports:
       - "80:80"
       - "443:443"
     volumes:
-      - phishield-volume-nginx:/etc/nginx/nginx.conf
-      - phishield-volume-letsencrypt:/etc/letsencrypt
-    
+      - phishield-volume-nginx:/opt/bitnami/nginx/conf/server_blocks:rw
+      - phishield-volume-letsencrypt:/etc/letsencrypt:rw
+
   certbot:
     image: certbot/dns-cloudflare
     container_name: phishield-certbot
     volumes:
-      - phishield-volume-letsencrypt:/etc/letsencrypt
-      - ./cloudflare.ini:/root/cloudflare.ini
+      - phishield-volume-letsencrypt:/etc/letsencrypt:rw
     command: >-
       certonly --dns-cloudflare
-      --dns-cloudflare-credentials cloudflare.ini
+      --dns-cloudflare-credentials /etc/letsencrypt/cloudflare.ini
       --dns-cloudflare-propagation-seconds 15
       --register-unsafely-without-email
       --agree-tos --no-eff-email
       --force-renewal
-      -d phishield.dev
-      -d *phishield.dev
-
+      -d '*.phishield.dev'
 
 volumes:
   phishield-volume-letsencrypt:
     driver: local
     driver_opts:
-      o: bind
       type: none
-      device: ~/docker/etc/letsencrypt
+      o: bind
+      device: /home/ubuntu/docker/etc/letsencrypt
   phishield-volume-nginx:
     driver: local
     driver_opts:
-      o: bind
       type: none
-      device: ~/docker/etc/nginx
+      o: bind
+      device: /home/ubuntu/docker/etc/nginx
 
 networks:
   phishield-network:
